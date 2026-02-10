@@ -1,0 +1,42 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pytest *)",
+      "Bash(python -m pytest *)",
+      "Bash(python -m apps.*)",
+      "Bash(gh issue *)",
+      "Bash(gh pr *)",
+      "Bash(gh api *)",
+      "Bash(git *)",
+      "Bash(pre-commit *)",
+      "Bash(ufmt *)",
+      "Bash(flake8 *)",
+      "Bash(pip install *)",
+      "Bash(uv pip install *)",
+      "Bash(.claude/scripts/*)"
+    ],
+    "deny": [
+      "Bash(rm -rf /)",
+      "Bash(git push --force *)",
+      "Bash(git push -f *)",
+      "Bash(git reset --hard *)",
+      "Bash(git clean -f *)"
+    ]
+  },
+  "env": {
+    "PYTHONPATH": "src"
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/pre-pr-check.sh"
+          }
+        ]
+      }
+    ]
+  }
+}
