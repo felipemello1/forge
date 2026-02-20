@@ -7,6 +7,7 @@
 | Fix a GitHub issue | `/work-on-issue <number>` |
 | Review a pull request | `/review-pr <number>` |
 | Run tests | `/run-tests` |
+| Generate oncall report | `/oncall-report` |
 
 ## File Structure
 
@@ -20,7 +21,8 @@ CLAUDE.md                           # Codebase context (always loaded)
 │   ├── fetch-issue.sh              # GitHub issue → markdown
 │   ├── fetch-pr.sh                 # GitHub PR → markdown
 │   ├── open-pr.sh                  # Create PR linked to issue
-│   └── run-tests.sh               # pytest with project flags
+│   ├── run-tests.sh               # pytest with project flags
+│   └── oncall-report.py            # Fetch issues/PRs, compute fields, write CSV
 ├── hooks/
 │   └── pre-pr-check.sh             # Block PR if on main or branch stale
 ├── templates/
@@ -28,9 +30,10 @@ CLAUDE.md                           # Codebase context (always loaded)
 ├── skills/
 │   ├── work-on-issue/
 │   │   └── SKILL.md                # Issue → TDD → PR
-│   └── review-pr/
-│       ├── SKILL.md                # Structured PR review
-│       └── review-criteria.md      # Forge-specific review checklist
+│   ├── review-pr/
+│   │   └── SKILL.md                # Structured PR review
+│   └── oncall-report/
+│       └── SKILL.md                # Oncall status report → CSV
 └── commands/
     └── run-tests.md                # Ad-hoc test runner
 ```
