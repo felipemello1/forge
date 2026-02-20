@@ -23,13 +23,7 @@ Read every changed file. For each file, read enough surrounding code to understa
 
 ## Step 3: Review
 
-Check against the criteria in [review-criteria.md](review-criteria.md). Focus on:
-
-1. **Correctness** — does it do what it claims? Edge cases?
-2. **Tests** — bug fixes MUST have a test. Are they in the right place?
-3. **torch.compile** — hot path changes must be compile-safe
-4. **Style** — matches CLAUDE.md conventions?
-5. **Bloat** — unrelated changes? Unnecessary abstractions?
+Check against the conventions in CLAUDE.md. Focus on correctness, test coverage, torch.compile safety, and whether the change introduces unnecessary complexity.
 
 ## Step 4: Post Review
 
@@ -51,11 +45,3 @@ Post via:
 ```bash
 gh pr review <PR_NUMBER> --comment --body "<review>"
 ```
-
-## What Makes a Good Review
-
-- **Be specific.** "Line 45: `foo` should be `bar` because X"
-- **Be actionable.** Every issue tells the author what to do.
-- **Don't nitpick style** if pre-commit handles it.
-- **Don't suggest bloat.** No extra abstractions, error handling, or features.
-- **Do catch correctness bugs.** Wrong math, broken compile, race conditions.

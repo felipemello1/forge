@@ -5,17 +5,8 @@
 # This source code is licensed under the BSD-style license found in the
 # LICENSE file in the root directory of this source tree.
 
-# PreToolUse hook for Bash: prevents PR creation from bad states.
-#
-# Why this exists: without this hook, Claude can create PRs from the main
-# branch (wrong) or from a branch that's behind main (will show merge
-# conflicts on GitHub). Both waste CI time and reviewer attention.
-#
-# How it works: Claude Code calls this before any Bash command. We check
-# if the command is `gh pr create`. If so, we verify the branch is not
-# main and is up-to-date with the base branch. Exit 2 = block the command.
-#
-# Adapted from OpenEnv's .claude/hooks/pre-pr-check.sh.
+# PreToolUse hook: blocks `gh pr create` if on main or behind the base branch.
+# Exit 0 = allow, exit 2 = block with error message.
 
 # Read JSON from stdin (Claude Code passes tool input as JSON)
 INPUT=$(cat)

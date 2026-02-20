@@ -77,13 +77,7 @@ If it passes, the bug doesn't exist or the feature already works — stop and re
 
 ## Step 6: Implement the Fix
 
-Minimum code to make the test pass. Follow conventions from CLAUDE.md:
-
-- Composition over inheritance (max 1 level)
-- No unnecessary abstractions
-- Type hints: `X | None` not `Optional[X]`
-- Line length: 120
-- torch.compile safe in hot paths
+Minimum code to make the test pass. Follow conventions from CLAUDE.md.
 
 ## Step 7: Verify
 
